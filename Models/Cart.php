@@ -7,6 +7,7 @@ use App\OnlineShopping\OverWriting\Migration;
 use App\OnlineShopping\Models\Product;
 use Illuminate\Database\Eloquent\Relations\hasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Pagination\LengthAwarePaginator ;
 
 class Cart extends Model {
 
@@ -37,20 +38,6 @@ class Cart extends Model {
      */
     public function Products( ) : BelongsToMany {
         return $this -> belongsToMany( Product::class , CartProduct::class ) ;
-    }
-
-    /**
-     * Relations between Products and Cart on Cart OnlineShopping
-     * @return BelongsToMany
-     */
-    public function paginateProducts( string $orderType = 'ASC' , int $pre_page = 15 )  {
-        $paginate = $this 
-            -> CartProducts (                           )
-            -> with         ( 'Product'                 )
-            -> orderBy      ( 'created_at' , $orderType )
-            -> paginate     ( $pre_page                 )
-        ;
-        return $paginate -> setCollection( $paginate -> map( fn( $CartProducts ) => $CartProducts -> Product ) ) ;
     }
 
 }

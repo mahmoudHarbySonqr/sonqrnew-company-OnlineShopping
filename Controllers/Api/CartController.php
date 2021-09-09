@@ -26,7 +26,9 @@ class CartController extends Controller {
         return new ProductCollection(
             Auth::user               ( )
             -> getOnlineShoppingCart ( )
-            -> paginateProducts      ( $Request -> get( 'orderType' , 'ASC' ) , $Request -> get( 'pre_page'  , 15 ) )
+            -> Products              ( )
+            -> orderBy               ( 'created_at' , $Request -> get( 'orderType' , 'ASC' ) )
+            -> paginate              (                $Request -> get( 'pre_page'  , 15    ) )
         ) ;
     }
 

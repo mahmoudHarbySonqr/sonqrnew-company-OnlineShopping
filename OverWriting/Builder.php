@@ -9,7 +9,7 @@ class Builder extends BuilderQuery {
 
     protected function runPaginationCountQuery( $columns = ['*'] ) : array {
 
-        if ( is_array( $this -> havings ) && empty( $this -> havings ) ) return $this 
+        if ( ! is_array( $this -> havings ) && empty( $this -> havings ) ) return $this 
             -> cloneWithout( [ 'columns' , 'orders' , 'limit' , 'offset' ] )
             -> cloneWithoutBindings( [ 'select' , 'order' ] )
             -> setAggregate( 'count' , $this->withoutSelectAliases( $columns ) )
