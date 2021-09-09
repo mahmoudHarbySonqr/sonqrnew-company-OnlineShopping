@@ -22,6 +22,7 @@ Route::namespace( 'App\OnlineShopping\Controllers\Api' ) -> group ( fn ( ) : arr
         Route::get( '/all'                                 , 'CategoryController@all'       ) -> name( 'all'        )
     ]),
     Route::name( 'Cart.'    ) -> prefix( 'Cart'    ) -> group( fn ( ) : array => [
-        Route::put( '/addProduct/{product_id}/{quantity?}' , 'CartController@addProduct'    ) -> name( 'addProduct' ) -> middleware( 'UserAuth' )
+        Route::put( '/addProduct/{product_id}/{quantity?}' , 'CartController@addProduct'    ) -> name( 'addProduct' ) -> middleware ( 'UserAuth' ) ,
+        Route::get( '/Products'                            , 'CartController@getProducts'   ) -> name( 'Products'   ) -> middleware ( 'UserAuth' )
     ])
 ]) ;
