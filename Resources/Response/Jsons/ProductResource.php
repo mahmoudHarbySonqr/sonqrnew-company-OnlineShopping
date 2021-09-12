@@ -15,6 +15,14 @@ class ProductResource extends JsonResource{
             'is_available' => $this -> is_available ,
             'quantity'     => $this -> quantity     ,
             'category'     => new CategoryResource ( $this -> category ) ,
+            'avatar_url'   => [ 'https://via.placeholder.com/400' ] ,
+            'images_urls'  => [
+                'https://via.placeholder.com/400' ,
+                'https://via.placeholder.com/400' ,
+                'https://via.placeholder.com/400' ,
+                'https://via.placeholder.com/400' ,
+                'https://via.placeholder.com/400' ,
+            ] ,
         ] ;
     }
 

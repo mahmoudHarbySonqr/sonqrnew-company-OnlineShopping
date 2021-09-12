@@ -11,6 +11,7 @@ class CategoryResource extends JsonResource{
             'name'        => $this -> name        ,
             'description' => $this -> description ,
             'sort'        => $this -> sort        ,
+            'avatar_url'  => [ 'https://via.placeholder.com/400' ] ,
         ];
     }
 }
